@@ -3,7 +3,6 @@
 var assert = require('assert-ok')
 var assertObserv = require('assert-observ')
 var partial = require('ap').partial
-var softSet = require('soft-set')
 var forOwn = require('for-own')
 
 module.exports = function softUpdateStruct (struct, data) {
