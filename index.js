@@ -22,6 +22,8 @@ function updateStruct (struct, data) {
     if (value._type === 'observ-struct') {
       return updateStruct(struct[key], value)
     }
-    softSet(struct[key], value)
+    if (struct[key]() !== value) {
+      struct[key].set(value)
+    }
   })
 }
