@@ -67,15 +67,15 @@ test('recursive', function (t) {
 
   update(struct, {
     a: {
-      foo: 2,
-      bar: 2
+      foo: 1,
+      bar: 3
     }
   })
 
   t.deepEqual(struct(), {
     a: {
-      foo: 2,
-      bar: 2
+      foo: 1,
+      bar: 3
     },
     b: 3
   })

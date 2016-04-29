@@ -18,11 +18,12 @@ module.exports = function softUpdateStruct (struct, data) {
 
 function updateStruct (struct, data) {
   forOwn(data, function (value, key) {
-    if (value._type === 'observ-struct') {
-      return updateStruct(struct[key], value)
+    var cursor = struct[key]
+    if (cursor._type === 'observ-struct') {
+      return updateStruct(cursor, value)
     }
-    if (struct[key]() !== value) {
-      struct[key].set(value)
+    if (cursor() !== value) {
+      cursor.set(value)
     }
   })
 }
