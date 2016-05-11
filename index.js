@@ -11,6 +11,8 @@ module.exports = function softUpdateStruct (struct, data) {
 
   if (arguments.length < 2) return partial(softUpdateStruct, struct)
 
+  if (!data) return struct
+
   updateStruct(struct, data)
 
   return struct
@@ -19,10 +21,11 @@ module.exports = function softUpdateStruct (struct, data) {
 function updateStruct (struct, data) {
   forOwn(data, function (value, key) {
     var cursor = struct[key]
+    if (!cursor) return
     if (cursor._type === 'observ-struct') {
       return updateStruct(cursor, value)
     }
-    if (cursor() !== value) {
+    if (typeof cursor === 'function' && cursor() !== value) {
       cursor.set(value)
     }
   })
