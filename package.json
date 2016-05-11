@@ -1,7 +1,7 @@
 {
   "name": "soft-update-struct",
   "main": "index.js",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Recursively update an observ-struct, only setting values that changed",
   "license": "MIT",
   "repository": "ajoslin/soft-update-struct",
