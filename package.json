@@ -31,7 +31,7 @@
     "tape": "^4.0.0"
   },
   "files": [
-    "index.js"
+    "*.js"
   ],
   "dependencies": {
     "ap": "^0.2.0",
