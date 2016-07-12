@@ -80,3 +80,21 @@ test('recursive', function (t) {
     b: 3
   })
 })
+
+test.only('custom compare fn', function (t) {
+  t.plan(2)
+
+  var struct = Struct({
+    a: Observ(1)
+  })
+
+  update(struct, {a: 2}, isSpecialEqual)
+  t.deepEqual(struct(), {a: 1})
+
+  update(struct, {a: 3}, isSpecialEqual)
+  t.deepEqual(struct(), {a: 3})
+
+  function isSpecialEqual (a, b) {
+    return b - a === 1
+  }
+})
