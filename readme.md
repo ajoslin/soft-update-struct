@@ -33,7 +33,7 @@ struct() // => {foo: 2, bar: 2, baz: 3}
 
 ## API
 
-#### `softUpdateStruct(struct, [data])` -> `struct / function`
+#### `softUpdateStruct(struct, [data], [compareFn])` -> `struct / function`
 
 Recursively updates values in `struct` from `data`, only calling set on values that have changed.
 
@@ -49,6 +49,12 @@ An observable [struct](https://github.com/raynos/observ-struct).
 Type: `object`
 
 The data to use to update the struct. All keys must have already been defined as observables in the struct. If `data` is omitted, a partially applied function that takes a `data` argument will be returned.
+
+##### compareFn
+
+Type: `function compare (a, b) -> Boolean`
+
+By default, changes are detected through an equality-by-reference check (`===`). Pass in a custom compareFn to change the change detection logic.
 
 ## License
 
